@@ -1,0 +1,25 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+env/
+
+# Django Migrations
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# Media / Static Files
+staticfiles/
+media/
+
+# Django Secret Key (if using .env)
+.env
+
+# VS Code and IDE Files
+.vscode/
+.idea/
