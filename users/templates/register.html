@@ -1,14 +1,39 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <title>Register - To-Do App</title>
 </head>
 <body>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+<div class="header">
+    <!-- Placeholder SVG Logo (Checkmark Circle) -->
+    <svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Register</h1>
+</div>
+<div class="container">
+    <form class="register-form" method="post">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+        </div>
+        <div class="form-field">
+            <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+            {{ form.password }}
+        </div>
+        <div class="form-field">
+            <label for="{{ form.confirm_password.id_for_label }}">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password }}
+        </div>
+        <button type="submit" class="register-button">Register</button>
+    </form>
+</div>
 </body>
 </html>
