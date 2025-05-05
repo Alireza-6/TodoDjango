@@ -11,6 +11,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = "users.CustomUser"
 
 INSTALLED_APPS = [
+    'django_daisy',
+    'django.contrib.humanize',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
