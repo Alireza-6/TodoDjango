@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'create_todo.css' %}">
+    <title>To-Do App</title>
+</head>
+<body>
+<div class="header">
+    <!-- Placeholder SVG Logo (Checkmark Circle) -->
+    <svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"></circle>
+        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <h1>To-Do List</h1>
+</div>
+<div class="container">
+    <form method="post" class="input-section">
+        {% csrf_token %}
+        {{ form.title }}
+        <button type="submit" class="add-button">Add Task</button>
+    </form>
+</div>
+</body>
+</html>
