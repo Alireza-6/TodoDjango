@@ -19,30 +19,22 @@
 </div>
 <div class="container">
     <div class="task-list">
-        <div class="task-card">
-            <span class="task-text">Buy groceries</span>
-            <a href="#" class="check-button">
-                <span>&#10003;</span>
-            </a>
-        </div>
-        <div class="task-card">
-            <span class="task-text">Finish project report</span>
-            <a href="#" class="check-button">
-                <span>&#10003;</span>
-            </a>
-        </div>
-        <div class="task-card">
-            <span class="task-text">Call dentist</span>
-            <a href="#" class="check-button">
-                <span>&#10003;</span>
-            </a>
-        </div>
-        <div class="task-card">
-            <span class="task-text">Exercise for 30 minutes</span>
-            <a href="#" class="check-button">
-                <span>&#10003;</span>
-            </a>
-        </div>
+        {% for todo in uncompleted_todos %}
+            <div class="task-card">
+                <span class="task-text">{{ todo.title }}</span>
+                <a href="#" class="check-button">
+                    <span>&#10003;</span>
+                </a>
+            </div>
+        {% endfor %}
+        {% for todo in completed_todos %}
+            <div class="task-card">
+                <span class="task-text">{{ todo.title }}</span>
+                <a href="#" class="check-button" style="background-color: red">
+                    <span>&#8855;</span>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 </div>
 </body>
