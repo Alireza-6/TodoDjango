@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from todos.forms import TodoForm
 from todos.models import Todo
@@ -25,3 +25,12 @@ def create_todo_view(request):
     else:
         form = TodoForm()
     return render(request, "create_todo.html", {"form": form})
+
+
+@login_required(login_url="/users/login")
+def delete_todo_view(request, todo_id):
+    todo = get_object_or_404(Todo, id=todo_id)
+    if request.method == 'POST':
+        todo.delete()
+        return redirect('list_todos')
+    return render(request, 'list_todos.html', {'todo': todo})

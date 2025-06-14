@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <title>List Todos - To-Do List</title>
 </head>
 <body>
@@ -27,15 +27,28 @@
                 </a>
             </div>
         {% endfor %}
+        <hr class="separator">
         {% for todo in completed_todos %}
-            <div class="task-card">
+            <li class="task-card">
                 <span class="task-text">{{ todo.title }}</span>
-                <a href="#" class="check-button" style="background-color: red">
-                    <span>&#8855;</span>
-                </a>
-            </div>
+                <button class="delete-btn" onclick="openPopup('deletePopup{{ todo.id }}')">Delete</button>
+                <!-- Delete Confirmation Popup -->
+                <div class="popup-overlay" id="deletePopup{{ todo.id }}Overlay"></div>
+                <div class="popup" id="deletePopup{{ todo.id }}">
+                    <h2>Confirm Delete</h2>
+                    <p>Do you want to delete "{{ todo.title }}"?</p>
+                    <form action="{% url 'delete_todo' todo.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-confirm">Delete</button>
+                        <button type="button" class="cancel-btn" onclick="closePopup('deletePopup{{ todo.id }}')">
+                            Cancel
+                        </button>
+                    </form>
+                </div>
+            </li>
         {% endfor %}
     </div>
+    <script src="{% static 'js/deletePopup.js' %}"></script>
 </div>
 </body>
 </html>
