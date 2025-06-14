@@ -34,3 +34,13 @@ def delete_todo_view(request, todo_id):
         todo.delete()
         return redirect('list_todos')
     return render(request, 'list_todos.html', {'todo': todo})
+
+
+@login_required(login_url="/users/login/")
+def complete_todo_view(request, todo_id):
+    todo = get_object_or_404(Todo, id=todo_id)
+    if request.method == 'POST':
+        todo.is_completed = True
+        todo.save()
+        return redirect('list_todos')
+    return render(request, 'list_todos.html', {'todo': todo})

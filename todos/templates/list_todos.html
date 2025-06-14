@@ -22,9 +22,10 @@
         {% for todo in uncompleted_todos %}
             <div class="task-card">
                 <span class="task-text">{{ todo.title }}</span>
-                <a href="#" class="check-button">
-                    <span>&#10003;</span>
-                </a>
+                <form action="{% url 'complete_todo' todo.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="complete-btn">Complete</button>
+                </form>
             </div>
         {% endfor %}
         <hr class="separator">

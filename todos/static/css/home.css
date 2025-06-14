@@ -225,3 +225,16 @@ body {
 .cancel-btn:hover {
     background: #6c7a89;
 }
+
+.complete-btn {
+    background: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.complete-btn:hover {
+    background: forestgreen;
+}
