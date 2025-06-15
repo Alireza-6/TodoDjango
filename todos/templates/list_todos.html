@@ -48,6 +48,9 @@
                 </div>
             </li>
         {% endfor %}
+        <div class="create-todo">
+            <a href="{% url 'create_todo' %}">Create Todo</a>
+        </div>
     </div>
     <script src="{% static 'js/deletePopup.js' %}"></script>
 </div>

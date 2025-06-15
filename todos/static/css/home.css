@@ -238,3 +238,24 @@ body {
 .complete-btn:hover {
     background: forestgreen;
 }
+
+.create-todo {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.create-todo a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #1a1f4a;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition: linear .5s;
+}
+
+.create-todo a:hover {
+    transition: linear .5s;
+    background-color: #2d336b;
+}
